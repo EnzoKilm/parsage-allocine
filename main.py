@@ -4,9 +4,8 @@ from bs4 import BeautifulSoup
 import requests
 
 recherche = input("Recherche : ")
-recherche = recherche.replace(" ", "+")
 
-url = "http://www.allocine.fr/recherche/1/?q=" + recherche
+url = "http://www.allocine.fr/recherche/1/?q=" + recherche.replace(" ", "+")
 
 html = requests.get(url).text
 
@@ -16,8 +15,10 @@ div_films = soup.find('div', {'class': 'colcontent'})
 films = div_films.find_all('tr')
 
 code = """<html>
-<head></head>
-<body>"""
+<head><title>Résultat de la recherche</title></head>
+<body><h1>Recherche : """
+
+code += recherche + "</h1>"
 
 for film in films:
     film.find_all('td')
