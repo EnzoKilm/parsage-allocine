@@ -2,24 +2,23 @@
 $infos = $_REQUEST['infos'];
 
 $mots = explode(" ", $infos);
-
 $criteres = str_replace(" ", "+", $infos);
-
 $url = "http://www.allocine.fr/recherche/1/?q=".$criteres;
-
 echo $url;
 
 $page = file_get_contents($url);
-
 var_dump($page);
 
-$first_pos = strpos($page, "vmargin10t");
-echo $first_pos;
-$last_pos = strrpos($page, "colcontent");
-echo '<br/>'.$last_pos;
+echo '<hr/>';
 
-$div_films = substr($page, $first_pos, $last_pos);
+$doc = new DOMDocument();
+@$doc->loadHTML($page);
 
-var_dump($div_films);
+// $doc_page = $doc->saveHTML();
+$tds = $doc->getElementsByTagName('td');
+foreach ($tds as $td) {
+    // var_dump($td->nodeValue, PHP_EOL);
+    // echo $td->nodeValue, PHP_EOL;
+}
 
 // header("Location: index.php");
