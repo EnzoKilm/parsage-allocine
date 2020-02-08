@@ -2,6 +2,7 @@
 
 from bs4 import BeautifulSoup
 import requests
+import webbrowser
 
 recherche = input("Recherche : ")
 
@@ -45,3 +46,5 @@ code += """</body>
 resultat = open('resultat.html','w', encoding='utf-8')
 resultat.write(code)
 resultat.close()
+
+webbrowser.open('resultat.html')
