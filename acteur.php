@@ -20,10 +20,5 @@
                         echo $info;
                     }
                 }
-
-                // INFOS : card entity-card entity-card-overview entity-card-list cf
-                // SYNOPSIS : section ovw ovw-synopsis
-
-                
             ?>
         </div>
