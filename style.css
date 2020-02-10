@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+form {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #319bbb;
+    position: fixed;
+    width: 100%;
+} form p {
+    margin-right: 10px;
+} form select#type-select {
+    margin-left: 10px;
+}
+
+input[type="submit"] {
+    margin-left: 10px;
+}
+
+.films {
+    padding-top: 60px;
+    background-color: #ececec;
+}
+
+.film {
+    padding: 10px;
+}
+.white {
+    background-color: #ececec;
+}
+.gray {
+    background-color: #919191;
+}
+
+footer {
+    padding: 20px 0;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
