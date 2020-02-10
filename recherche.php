@@ -35,6 +35,23 @@
                                 } else {
                                     echo ' gray">';
                                 }
+                                // Remplacement du lien du href (image)
+                                $a_films = $film->find('a');
+                                foreach($a_films as $a_film) {
+                                    $href_film = 'http://www.allocine.fr'.$a_film->href;
+                                    $length = strlen($href_film);
+                                    for ($i=0; $i<$length; $i++) {
+                                        if ($href_film[$i] == '=') {
+                                            $position_debut = $i;
+                                        }
+
+                                        if (isset($position_debut)) {
+                                            $id = substr($href_film, $position_debut+1, $length-5);
+                                        }
+                                    }
+
+                                    $a_film->href = 'index.php?film='.$id;
+                                }
                                 echo $film.'</div>';
                             }
                             $position += 1;
