@@ -24,7 +24,7 @@
                 if(isset($_POST['select'])) {
                     $select = $_POST['select'];
                 } else {
-                    $select = '';
+                    $select = 'Films';
                 }
 
                 if(isset($_POST['infos'])) {
@@ -65,7 +65,7 @@
                     if ($select == 'Films') {
                         $url = "http://www.allocine.fr/recherche/1/?q=".$criteres;
                     } else {
-                        $url = "http://www.allocine.fr/recherche/?q=".$criteres;
+                        $url = "http://www.allocine.fr/recherche/5/?q=".$criteres;
                     }
                     
                     $html = file_get_html($url);
@@ -81,28 +81,15 @@
                         }
                     }
 
-                    $divs = $colcontent[0]->find('div');
-                    $spacer_before = false;
-                    $div_found = false;
-                    foreach($divs as $div) {
-                        if ($spacer_before == true) {
-                            $title_name = $div->find('h2');
-                            if ($title_name[0] == $h2[0]) {
-                                $div_found = true;
-                                break;
-                            }
-                        }
-
-                        if ($div->class == 'spacer hrbicolor vmargin20t vmargin10b') {
-                            $spacer_before = true;
-                        } else {
-                            $spacer_before = false;
-                        }
-                    }
-
                     $trs = $colcontent[0]->find('tr');
                     $position = 0;
                     foreach($trs as $tr) {
+                        $next_div = $tr->find('div');
+                        if ($next_div != null) {
+                            if ($next_div[0]->class == 'navbar') {
+                                break;
+                            }
+                        }
                         if ($position % 2 == 0) {
                             echo '<div class="film';
                             if ($position % 4 == 0) {
@@ -110,7 +97,12 @@
                             } else {
                                 echo ' gray">';
                             }
-                            echo $tr.'</div></div>';
+
+                            if ($select == 'Films') {
+                                echo $tr.'</div></div>';
+                            } else {
+                                echo $tr.'</div>';
+                            }
                         }
                         $position += 1;
                     }
