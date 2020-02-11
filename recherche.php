@@ -52,7 +52,11 @@
 
                                     $a_film->href = 'index.php?film='.$id;
                                 }
-                                echo $film.'</div>';
+                                $thumbnail = $film->find('.thumbnail-container');
+                                $entitycardlist = $film->find('.entity-card-list');
+                                $meta = $entitycardlist[0]->find('.meta');
+                                $synopsis = $entitycardlist[0]->find('.synopsis');
+                                echo $thumbnail[0].$meta[0].$synopsis[0].'</div>';
                             }
                             $position += 1;
                         }
@@ -70,6 +74,7 @@
                     
                     $colcontent = $html->find('.colcontent');
 
+                    // On récupère le titre de la partie
                     $titlebars = $colcontent[0]->find('.titlebar');
                     foreach($titlebars as $titlebar) {
                         $h2 = $titlebar->find('h2');

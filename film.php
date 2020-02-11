@@ -26,7 +26,9 @@
                 echo "<div id='blogvision'><iframe src='http://player.allocine.fr/".$url_ba.".html' style='width:480px; height:270px'></iframe>";
 
                 $infos = $colleft[0]->find('.entity-card-list');
-                echo $infos[0];
+                $thumbnail = $infos[0]->find('.thumbnail');
+                $meta = $infos[0]->find('.meta');
+                echo $thumbnail[0].$meta[0];
 
                 $synopsis = $colleft[0]->find('.ovw-synopsis');
                 echo $synopsis[0];
