@@ -35,6 +35,12 @@
                                 } else {
                                     echo ' gray">';
                                 }
+                                // Remplacement de l'image
+                                $img_films = $film->find('img');
+                                $data_src = $img_films[0]->getAttribute('data-src');
+                                if ($data_src != null) {
+                                    $img_films[0]->src = $data_src;
+                                }
                                 // Remplacement du lien du href (image)
                                 $a_films = $film->find('a');
                                 foreach($a_films as $a_film) {

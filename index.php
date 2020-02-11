@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?recherche=true">
             <p>&#128269;</p><input type="text" name="infos" id="infos" placeholder="Titre, réalisateur, acteur..." />
             <select name="select" id="type-select">
                 <option value="Films">film</option>
@@ -22,8 +22,10 @@
                 include 'film.php';
             } else if (isset($_REQUEST['acteur'])) {
                 include 'acteur.php';
-            } else {
+            } else if (isset($_REQUEST['recherche'])) {
                 include 'recherche.php';
+            } else {
+                include 'accueil.php';
             }
         ?>
     </div>
